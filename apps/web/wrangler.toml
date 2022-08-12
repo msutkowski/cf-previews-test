@@ -1,0 +1,5 @@
+name = "web"
+main = "src/preview.js"
+compatibility_date = "2022-05-06"
+
+site = { bucket = "./dist" }

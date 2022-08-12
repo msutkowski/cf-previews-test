@@ -1,0 +1,35 @@
+name: Workers PR Preview
+
+on: [pull_request]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shidil/cloudflare-workers-preview@v1
+        with:
+          cf_token: ${{ secrets.CF_API_TOKEN }}
+          cf_account: ${{ secrets.CF_ACCOUNT_ID }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          domain: msutkowski.workers.dev
+          project_path: apps/docs
+          teardown: "true"
+          build: |
+            npm install
+            npm run build
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shidil/cloudflare-workers-preview@v1
+        with:
+          cf_token: ${{ secrets.CF_API_TOKEN }}
+          cf_account: ${{ secrets.CF_ACCOUNT_ID }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          domain: msutkowski.workers.dev
+          project_path: apps/web
+          teardown: "true"
+          build: |
+            npm install
+            npm run build
