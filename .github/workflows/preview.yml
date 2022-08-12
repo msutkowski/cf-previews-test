@@ -15,9 +15,7 @@ jobs:
           domain: msutkowski.workers.dev
           project_path: apps/docs
           teardown: "true"
-          build: |
-            npm install
-            npm run build
+          build: npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
   web:
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +28,4 @@ jobs:
           domain: msutkowski.workers.dev
           project_path: apps/web
           teardown: "true"
-          build: |
-            npm install
-            npm run build
+          build: npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
