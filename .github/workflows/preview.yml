@@ -17,7 +17,7 @@ jobs:
           teardown: "true"
           build: |
             npm install
-            npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
+            npm run build -- --filter web --api https://turbocache.msutkowski.com --token ${{ secrets.TURBO_TOKEN }}
   web:
     runs-on: ubuntu-latest
     steps:
@@ -32,4 +32,4 @@ jobs:
           teardown: "true"
           build: |
             npm install
-            npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
+            npm run build -- --filter web --api https://turbocache.msutkowski.com --token ${{ secrets.TURBO_TOKEN }}
