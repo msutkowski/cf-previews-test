@@ -17,6 +17,7 @@
     "eslint-config-custom": "*",
     "tsconfig": "*",
     "typescript": "^4.6.4",
-    "vite": "^3.0.0"
+    "vite": "^3.0.0",
+    "@cloudflare/kv-asset-handler": "~0.1.2"
   }
 }
