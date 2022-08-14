@@ -1,4 +1,6 @@
 {
+  "separate-pull-requests": true,
+  "draft": true,
   "packages": {
     "apps/docs": {},
     "apps/web": {}
