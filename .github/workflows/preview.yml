@@ -1,31 +1,125 @@
-name: Workers PR Preview
+name: Preview
 
-on: [pull_request]
+env:
+  NODE_VERSION: 16
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
-jobs:
-  docs:
+on:
+  push:
+    branches-ignore:
+      - main
+  workflow_dispatch:
+
+docs:
+  admin:
     runs-on: ubuntu-latest
+
+    environment:
+      name: Preview
+      url: https://${{ steps.setup.outputs.branch }}.test-docs-cfp.pages.dev
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: shidil/cloudflare-workers-preview@v1
+      - id: setup
+        name: Setup Branch
+        uses: actions/github-script@v6
         with:
-          cf_token: ${{ secrets.CF_API_TOKEN }}
-          cf_account: ${{ secrets.CF_ACCOUNT_ID }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          domain: msutkowski.workers.dev
-          project_path: apps/docs
-          teardown: "true"
-          build: npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
+          script: |
+            const cleanBranch = context.ref
+              .replace('refs/heads/', '')
+              .replace(/[^a-z0-9\-]+/i, '-')
+              .replace(/-{2,}/, '-')
+              .toLowerCase()
+            if (cleanBranch === "") {
+              core.setFailed('Unable to determine clean branch name. Blocking to avoid production deploy.')
+            } else {
+              core.info(`Clean branch is set to ${cleanBranch}`)
+            }
+            core.setOutput('branch', cleanBranch)
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+          node-version: 16.13.2
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        id: cache-nodemodules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm install --frozen-lockfile --non-interactive
+
+      - name: Build
+        run: npx turbo run build --api="https://turbocache.msutkowski.com" --token="${{ env.TURBO_TOKEN }}"
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages publish ./apps/docs/dist --project-name=test-docs --branch="${{ steps.setup.outputs.branch }}"
   web:
     runs-on: ubuntu-latest
+
+    environment:
+      name: Preview
+      url: https://${{ steps.setup.outputs.branch }}.test-web-aa8.pages.dev
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: shidil/cloudflare-workers-preview@v1
+      - id: setup
+        name: Setup Branch
+        uses: actions/github-script@v6
         with:
-          cf_token: ${{ secrets.CF_API_TOKEN }}
-          cf_account: ${{ secrets.CF_ACCOUNT_ID }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          domain: msutkowski.workers.dev
-          project_path: apps/web
-          teardown: "true"
-          build: npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
+          script: |
+            const cleanBranch = context.ref
+              .replace('refs/heads/', '')
+              .replace(/[^a-z0-9\-]+/i, '-')
+              .replace(/-{2,}/, '-')
+              .toLowerCase()
+            if (cleanBranch === "") {
+              core.setFailed('Unable to determine clean branch name. Blocking to avoid production deploy.')
+            } else {
+              core.info(`Clean branch is set to ${cleanBranch}`)
+            }
+            core.setOutput('branch', cleanBranch)
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+          node-version: 16.13.2
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        id: cache-nodemodules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm install --frozen-lockfile --non-interactive
+
+      - name: Build
+        run: npx turbo run build --api="https://turbocache.msutkowski.com" --token="${{ env.TURBO_TOKEN }}"
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages publish ./apps/web/dist --project-name=test-web --branch="${{ steps.setup.outputs.branch }}"
