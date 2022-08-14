@@ -10,7 +10,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <a href="https://www.typescriptlang.org/" target="_blank">
       <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
     </a>
-    ${Header({ title: "Docs are super cool" })}
+    ${Header({ title: "Docs are superduper cool" })}
     <div class="card">
       ${Counter()}
     </div>
