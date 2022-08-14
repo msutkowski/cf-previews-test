@@ -15,5 +15,8 @@
     "eslint-config-custom": "*",
     "prettier": "^2.5.1",
     "turbo": "latest"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.24.2"
   }
 }

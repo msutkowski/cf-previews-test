@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: shidil/cloudflare-workers-preview@v1
+      - uses: msutkowski/cloudflare-workers-preview@8d4124ff241d212f99c745f63d65177eb8c1d81e
         with:
           cf_token: ${{ secrets.CF_API_TOKEN }}
           cf_account: ${{ secrets.CF_ACCOUNT_ID }}
@@ -15,12 +15,14 @@ jobs:
           domain: msutkowski.workers.dev
           project_path: apps/docs
           teardown: "true"
-          build: npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
+          build: |
+            npm install
+            npm run build -- --filter web --api https://turbocache.msutkowski.com --token ${{ secrets.TURBO_TOKEN }}
   web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: shidil/cloudflare-workers-preview@v1
+      - uses: msutkowski/cloudflare-workers-preview@8d4124ff241d212f99c745f63d65177eb8c1d81e
         with:
           cf_token: ${{ secrets.CF_API_TOKEN }}
           cf_account: ${{ secrets.CF_ACCOUNT_ID }}
@@ -28,4 +30,6 @@ jobs:
           domain: msutkowski.workers.dev
           project_path: apps/web
           teardown: "true"
-          build: npm run build -- --filter web --token ${{ secrets.TURBO_TOKEN }}
+          build: |
+            npm install
+            npm run build -- --filter web --api https://turbocache.msutkowski.com --token ${{ secrets.TURBO_TOKEN }}
