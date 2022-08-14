@@ -10,8 +10,8 @@ on:
       - main
   workflow_dispatch:
 
-docs:
-  admin:
+jobs:
+  docs:
     runs-on: ubuntu-latest
 
     environment:
