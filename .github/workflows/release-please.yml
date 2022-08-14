@@ -12,3 +12,4 @@ jobs:
           release-type: node
           package-name: release-please-action
           monorepo-tags: true
+          command: manifest
