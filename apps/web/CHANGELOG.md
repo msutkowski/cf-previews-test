@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/msutkowski/cf-previews-test/compare/web-v1.0.1...web-v1.0.2) (2022-08-15)
+
+
+### Bug Fixes
+
+* web header is great ([#20](https://github.com/msutkowski/cf-previews-test/issues/20)) ([e7b8955](https://github.com/msutkowski/cf-previews-test/commit/e7b8955f19d7444f8c8dfd6633b2c2697feafe61))
+
 ## [1.0.1](https://github.com/msutkowski/cf-previews-test/compare/web-v1.0.0...web-v1.0.1) (2022-08-15)
 
 
