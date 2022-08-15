@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.0.3...web-v1.1.0) (2022-08-15)
+
+
+### Features
+
+* im gonna update in the existing PR ([c5efb8a](https://github.com/msutkowski/cf-previews-test/commit/c5efb8a30c5cc6303505db37d75a4fc32b670280))
+
+
+### Bug Fixes
+
+* header change ([#27](https://github.com/msutkowski/cf-previews-test/issues/27)) ([730ef0a](https://github.com/msutkowski/cf-previews-test/commit/730ef0a574083abd3748f746075ba9f47a176b42))
+* web is cool header ([0d8c3eb](https://github.com/msutkowski/cf-previews-test/commit/0d8c3eb68714063c5ed58c7b96c705a53fac2b03))
+
 ## [1.0.3](https://github.com/msutkowski/cf-previews-test/compare/web-v1.0.2...web-v1.0.3) (2022-08-15)
 
 
