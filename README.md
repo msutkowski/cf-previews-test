@@ -1,6 +1,6 @@
 # `Turborepo` Vite starter
 
-This is an official starter Turborepo, maybe!
+This is an official starter Turborepo
 
 ## What's inside?
 
