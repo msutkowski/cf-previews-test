@@ -9,4 +9,4 @@ jobs:
       - name: Enforce PR naming convention
         uses: deepakputhraya/action-pr-title@v1.0.2
         with:
-          regex: '(fix|feat):\s\[\w{1,8}-\d{1,8}\].*' # (fix: [OR-123] some title of the PR, feat: [OR-1234] some title of the PR)
+          regex: '^(fix|feat|chore|(fix|feat|chore)\(\w.*\)):\s(\[\w{1,8}-\d{1,8}\]|.*).*' # (fix: [OR-123] some title of the PR, feat: [OR-1234] some title of the PR)
