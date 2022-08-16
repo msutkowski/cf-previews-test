@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.1.1...docs-v1.2.0) (2022-08-16)
+
+
+### Features
+
+* greet thomas because he nice ([4048d74](https://github.com/msutkowski/cf-previews-test/commit/4048d744583c2511d9c8b1f912c0e1bb6b181f98))
+
+
+### Bug Fixes
+
+* [OR-123] docs needed fixin' ([#32](https://github.com/msutkowski/cf-previews-test/issues/32)) ([59f299b](https://github.com/msutkowski/cf-previews-test/commit/59f299bfe635fedc381499f1702f37f96428d9bc))
+* fix typo in header ([62e6c7d](https://github.com/msutkowski/cf-previews-test/commit/62e6c7de1053f1f18d2e901e87ea54c887a95d41))
+
 ## [1.1.1](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.1.0...docs-v1.1.1) (2022-08-15)
 
 
