@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.1.0...web-v1.2.0) (2022-08-16)
+
+
+### Features
+
+* update web very important feature ([#33](https://github.com/msutkowski/cf-previews-test/issues/33)) ([2c75998](https://github.com/msutkowski/cf-previews-test/commit/2c759985b90af35a6aa34205f7b5b10574265425))
+
 ## [1.1.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.0.3...web-v1.1.0) (2022-08-15)
 
 
