@@ -1,0 +1,112 @@
+name: Staging
+
+env:
+  NODE_VERSION: 16
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    # Set job outputs to values from filter step
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+      web: ${{ steps.filter.outputs.web }}
+      ui: ${{ steps.filter.outputs.ui }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # We're trying to replicate Vercel's Ignore Build feature here and they do a depth of 10.
+          fetch-depth: 10
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            web:
+              - 'apps/web/**'
+            docs:
+              - 'apps/docs/**'
+            ui:
+              - 'packages/ui/**'
+
+  web:
+    needs: changes
+    if: ${{ needs.changes.outputs.web == 'true' || needs.changes.outputs.ui == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        id: cache-nodemodules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build
+        run: npx turbo run build --filter=web --token="${{ env.TURBO_TOKEN }}"
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages publish ./apps/web/dist --project-name=web --branch="staging"
+  docs:
+    needs: changes
+    if: ${{ needs.changes.outputs.docs == 'true' || needs.changes.outputs.ui == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        id: cache-nodemodules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build
+        run: npx turbo run build --filter=docs --token="${{ env.TURBO_TOKEN }}"
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages publish ./apps/docs/dist/docs --project-name=docs --branch="staging"
