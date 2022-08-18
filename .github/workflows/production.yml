@@ -11,7 +11,7 @@ on:
       - prereleased
   workflow_dispatch:
     inputs:
-      apps:
+      app:
         description: "The app to manually deploy"
         required: true
         type: choice
@@ -28,6 +28,8 @@ jobs:
         run: echo "selected app - ${{ github.event.inputs.app }}"
       - name: log tag_name
         run: echo "selected app - ${{ github.event.tag_name }}"
+      - name: log event
+        run: echo ${{ github.event }}
 
   web:
     if: ${{ startsWith(github.event.tag_name, 'web-') || github.event.inputs.app == 'web' }}
