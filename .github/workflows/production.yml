@@ -1,45 +1,22 @@
-name: Staging
+name: Production
 
 env:
   NODE_VERSION: 16
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - released
+      - prereleased
   workflow_dispatch:
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    # Set job outputs to values from filter step
-    outputs:
-      docs: ${{ steps.filter.outputs.docs }}
-      web: ${{ steps.filter.outputs.web }}
-      ui: ${{ steps.filter.outputs.ui }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # We're trying to replicate Vercel's Ignore Build feature here and they do a depth of 10.
-          fetch-depth: 10
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          filters: |
-            web:
-              - 'apps/web/**'
-            docs:
-              - 'apps/docs/**'
-            ui:
-              - 'packages/ui/**'
-
   web:
+    if: startsWith(github.event.inputs.name, 'web:')
     environment:
-      name: Web Staging
-      url: https://staging.web.msutkowski.com
-    needs: changes
-    if: ${{ needs.changes.outputs.web == 'true' || needs.changes.outputs.ui == 'true' }}
+      name: Web Production
+      url: https://web.msutkowski.com
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -74,13 +51,12 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish ./apps/web/dist --project-name=test-web --branch="staging"
+          command: pages publish ./apps/web/dist --project-name=test-web
   docs:
+    if: startsWith(github.event.inputs.name, 'docs:')
     environment:
-      name: Docs Staging
+      name: Docs Production
       url: https://docs.web.msutkowski.com
-    needs: changes
-    if: ${{ needs.changes.outputs.docs == 'true' || needs.changes.outputs.ui == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -115,4 +91,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish ./apps/docs/dist --project-name=test-docs --branch="staging"
+          command: pages publish ./apps/docs/dist --project-name=test-docs
