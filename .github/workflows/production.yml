@@ -21,7 +21,7 @@ on:
 
 jobs:
   web:
-    if: ${{ startsWith(github.event.tag_name, 'web-') || github.event.inputs.app == 'web' }}
+    if: ${{ startsWith(github.event.release.tag_name, 'web-') || github.event.inputs.app == 'web' }}
     environment:
       name: Web Production
       url: https://web.msutkowski.com
@@ -61,7 +61,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages publish ./apps/web/dist --project-name=test-web
   docs:
-    if: ${{ startsWith(github.event.tag_name, 'docs-') || github.event.inputs.app == 'docs' }}
+    if: ${{ startsWith(github.event.release.tag_name, 'docs-') || github.event.inputs.app == 'docs' }}
     environment:
       name: Docs Production
       url: https://docs.web.msutkowski.com
