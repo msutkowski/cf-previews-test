@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.1...web-v1.2.2) (2022-08-18)
+
+
+### Bug Fixes
+
+* update headers for docs and web ([4066625](https://github.com/msutkowski/cf-previews-test/commit/40666258d60622e3627e5d6978135f1498c66cf0))
+
 ## [1.2.1](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.0...web-v1.2.1) (2022-08-18)
 
 
