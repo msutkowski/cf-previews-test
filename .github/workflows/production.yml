@@ -26,11 +26,11 @@ jobs:
     steps:
       - name: basic print logging
         run: |
-          echo "selected app - ${{ github.event.inputs.message }} \
+          echo "selected app - ${{ github.event.inputs.app }}
           echo "tag_name - ${{ github.event.tag_name }}
 
   web:
-    if: ${{ startsWith(github.event.tag_name, 'web-') || github.event.inputs.apps == 'web' }}
+    if: ${{ startsWith(github.event.tag_name, 'web-') || github.event.inputs.app == 'web' }}
     environment:
       name: Web Production
       url: https://web.msutkowski.com
