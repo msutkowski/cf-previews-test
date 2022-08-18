@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.0...web-v1.2.1) (2022-08-18)
+
+
+### Bug Fixes
+
+* **web:** [FAKE-123] update web header per product feedback ([2bf6c90](https://github.com/msutkowski/cf-previews-test/commit/2bf6c906f3dbb912833d908713f4d07c9b9a13ba))
+
 ## [1.2.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.1.0...web-v1.2.0) (2022-08-16)
 
 
