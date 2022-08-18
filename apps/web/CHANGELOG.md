@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.5...web-v1.2.6) (2022-08-18)
+
+
+### Bug Fixes
+
+* **web:** header title ([d5ec378](https://github.com/msutkowski/cf-previews-test/commit/d5ec3787da85518dc58f4b011a818842e4536566))
+
 ## [1.2.5](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.4...web-v1.2.5) (2022-08-18)
 
 
