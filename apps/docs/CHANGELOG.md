@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.2.4...docs-v1.2.5) (2022-08-18)
+
+
+### Bug Fixes
+
+* **docs:** update header ([444654e](https://github.com/msutkowski/cf-previews-test/commit/444654ea9d30fd074c377c903a8ea8c4bd31b29a))
+
 ## [1.2.4](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.2.3...docs-v1.2.4) (2022-08-18)
 
 
