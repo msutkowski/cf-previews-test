@@ -21,7 +21,7 @@ on:
 
 jobs:
   web:
-    if: ${{ startsWith(github.event.tag_name, 'web-') || input.apps == 'web' }}
+    if: ${{ startsWith(github.event.tag_name, 'web-') || inputs.apps == 'web' }}
     environment:
       name: Web Production
       url: https://web.msutkowski.com
