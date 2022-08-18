@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.4...web-v1.2.5) (2022-08-18)
+
+
+### Bug Fixes
+
+* **web:** update header copy one last time ([0b384cf](https://github.com/msutkowski/cf-previews-test/commit/0b384cfe3362ad4ce7d309dcbeaf5012dd9df9d1))
+
 ## [1.2.4](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.3...web-v1.2.4) (2022-08-18)
 
 
