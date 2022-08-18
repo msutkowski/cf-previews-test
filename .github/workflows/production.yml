@@ -20,8 +20,16 @@ on:
           - web
 
 jobs:
+  logger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: basic print logging
+        run: echo "selected app - ${{ github.event.inputs.message }}
+        run: echo "tag_name - ${{ github.event.tag_name }}
+
   web:
-    if: ${{ startsWith(github.event.tag_name, 'web-') || inputs.apps == 'web' }}
+    if: ${{ startsWith(github.event.tag_name, 'web-') || github.event.inputs.apps == 'web' }}
     environment:
       name: Web Production
       url: https://web.msutkowski.com
@@ -61,7 +69,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages publish ./apps/web/dist --project-name=test-web
   docs:
-    if: ${{ startsWith(github.event.tag_name, 'docs-') || inputs.app == 'docs' }}
+    if: ${{ startsWith(github.event.tag_name, 'docs-') || github.event.inputs.app == 'docs' }}
     environment:
       name: Docs Production
       url: https://docs.web.msutkowski.com
