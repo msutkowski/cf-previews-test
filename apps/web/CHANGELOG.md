@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.3...web-v1.2.4) (2022-08-18)
+
+
+### Bug Fixes
+
+* **web:** header title copy ([7e67664](https://github.com/msutkowski/cf-previews-test/commit/7e6766464f70c6a432a8193ab94951fa4f7ad00b))
+
 ## [1.2.3](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.2...web-v1.2.3) (2022-08-18)
 
 
