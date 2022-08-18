@@ -10,10 +10,18 @@ on:
       - released
       - prereleased
   workflow_dispatch:
+    inputs:
+      apps:
+        description: "The app to manually deploy"
+        required: true
+        type: choice
+        options:
+          - docs
+          - web
 
 jobs:
   web:
-    if: startsWith(github.event.inputs.name, 'web:')
+    if: ${{ startsWith(github.event.tag_name, 'web-') || input.apps == 'web' }}
     environment:
       name: Web Production
       url: https://web.msutkowski.com
@@ -53,7 +61,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages publish ./apps/web/dist --project-name=test-web
   docs:
-    if: startsWith(github.event.inputs.name, 'docs:')
+    if: ${{ startsWith(github.event.tag_name, 'docs-') || inputs.app == 'docs' }}
     environment:
       name: Docs Production
       url: https://docs.web.msutkowski.com
