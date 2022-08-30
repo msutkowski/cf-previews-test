@@ -1,7 +1,7 @@
 name: Sync versions in lock files
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened]
+    types: [opened, edited, synchronize, reopened, labeled]
   workflow_dispatch:
 
 jobs:
