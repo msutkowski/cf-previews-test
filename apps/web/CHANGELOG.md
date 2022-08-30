@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.6...web-v1.2.7) (2022-08-30)
+
+
+### Bug Fixes
+
+* update web index ([483047c](https://github.com/msutkowski/cf-previews-test/commit/483047c5d8dd95c64e30696bdbf2909d55e3a388))
+
 ## [1.2.6](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.5...web-v1.2.6) (2022-08-18)
 
 
