@@ -22,11 +22,11 @@ jobs:
       - name: "Update package-lock.json"
         run: "npm install --package-lock-only"
       - run: echo "here is the diff:" $(git diff --stat)
-      - id: diff
-        name: Set git diff to output
-        run: echo "::set-output name=diff::$(git diff --stat)"
+      # - id: diff
+      #   name: Set git diff to output
+      #   run: echo "::set-output name=diff::$(git diff --stat)"
       - name: "Merge changes with last commit"
-        if: "${{ needs.install.outputs.diff != '' }}"
+        if: "${{ $(git diff --stat) != '' }}"
         continue-on-error: true
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -40,6 +40,7 @@ jobs:
         with:
           force: true
           github_token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: ${{ github.ref }}
 
   # update-pull-request:
   #   needs: install
