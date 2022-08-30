@@ -5,10 +5,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  enforce-version-sync:
+  install:
     if: "${{ contains(github.event.pull_request.labels.*.name, 'autorelease: pending') }}"
     name: "Update Release PR"
     runs-on: ubuntu-latest
+    outputs:
+      diff: $${{ steps.output.outputs.diff }}
     steps:
       - uses: actions/checkout@v2
       - name: "Use Node.js"
@@ -17,13 +19,15 @@ jobs:
           cache: npm
       - name: "Update package-lock.json"
         run: "npm install --package-lock-only"
+      - name: Set git diff to output
+        run: echo "::set-output name=diff::git diff --stat"
   update-pull-request:
-    if: "${{ (git diff --stat) != '' }}"
-    needs: enforce-version-sync
+    needs: install
     runs-on: ubuntu-latest
     steps:
-      - continue-on-error: true
-        name: "Merge changes with last commit"
+      - name: "Merge changes with last commit"
+        continue-on-error: true
+        if: "${{ needs.install.outputs.diff != '' }}"
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
