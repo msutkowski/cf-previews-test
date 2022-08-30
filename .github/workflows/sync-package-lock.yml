@@ -31,8 +31,7 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .
-          git commit --amend --no-edit
+          git commit . -m "chore: package-lock version sync"
       - continue-on-error: true
         name: "Push changes"
         uses: ad-m/github-push-action@master
