@@ -10,7 +10,7 @@ jobs:
     name: "Update Release PR"
     runs-on: ubuntu-latest
     outputs:
-      diff: $${{ steps.output.outputs.diff }}
+      diff: ${{ steps.output.outputs.diff }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,11 +22,11 @@ jobs:
       - name: "Update package-lock.json"
         run: "npm install --package-lock-only"
       - run: echo "here is the diff:" $(git diff --stat)
-      # - id: diff
-      #   name: Set git diff to output
-      #   run: echo "::set-output name=diff::$(git diff --stat)"
+      - id: diff
+        name: Set git diff to output
+        run: echo "::set-output name=diff::$(git diff --stat)"
       - name: "Merge changes with last commit"
-        if: "${{ git diff --stat != '' }}"
+        if: "${{ steps.diff.outputs.diff != '' }}"
         continue-on-error: true
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
