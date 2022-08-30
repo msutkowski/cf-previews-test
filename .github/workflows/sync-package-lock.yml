@@ -35,11 +35,3 @@ jobs:
         with:
           force: true
           github_token: "${{ secrets.GITHUB_TOKEN }}"
-name: "Sync versions in lock files"
-true:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
-      - reopened
