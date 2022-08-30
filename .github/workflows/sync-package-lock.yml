@@ -1,39 +1,41 @@
-name: Sync versions in lock files
-on:
-  pull_request:
-    types: [opened, edited, synchronize, reopened]
-
+---
 jobs:
   enforce-version-sync:
-    if: ${{ contains(github.event.pull_request.labels*.name, 'autorelease: pending') }}
-    name: Update Release PR
+    if: "${{ contains(github.event.pull_request.labels*.name, 'autorelease: pending') }}"
+    name: "Update Release PR"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Use Node.js
+      - name: "Use Node.js"
         uses: actions/setup-node@v3
         with:
-          cache: 'npm'
-
-      - name: Update package-lock.json
-        run: npm install --package-lock-only
+          cache: npm
+      - name: "Update package-lock.json"
+        run: "npm install --package-lock-only"
   update-pull-request:
+    if: "${{ (git diff --stat) != '' }}"
     needs: enforce-version-sync
-    if: ${{ (git diff --stat) != '' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Merge changes with last commit
-        continue-on-error: true
+      - continue-on-error: true
+        name: "Merge changes with last commit"
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git reset --soft HEAD~1
           git add .
           git commit --amend --no-edit
-      - name: Push changes
+      - continue-on-error: true
+        name: "Push changes"
         uses: ad-m/github-push-action@master
-        continue-on-error: true
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
+name: "Sync versions in lock files"
+true:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
