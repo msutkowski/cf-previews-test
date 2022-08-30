@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.2.5...docs-v1.2.6) (2022-08-30)
+
+
+### Bug Fixes
+
+* update docs index ([28aa371](https://github.com/msutkowski/cf-previews-test/commit/28aa371441744c067725db8cc4a3f0af0ed07106))
+
 ## [1.2.5](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.2.4...docs-v1.2.5) (2022-08-18)
 
 
