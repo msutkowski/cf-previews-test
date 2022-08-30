@@ -26,7 +26,7 @@ jobs:
       #   name: Set git diff to output
       #   run: echo "::set-output name=diff::$(git diff --stat)"
       - name: "Merge changes with last commit"
-        if: "${{ $(git diff --stat) != '' }}"
+        if: "${{ git diff --stat != '' }}"
         continue-on-error: true
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
