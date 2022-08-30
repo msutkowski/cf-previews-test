@@ -10,7 +10,7 @@ jobs:
     name: "Update Release PR"
     runs-on: ubuntu-latest
     outputs:
-      diff: $${{ steps.output.outputs.diff }}
+      diff: ${{ steps.diff.outputs.diff }}
     steps:
       - uses: actions/checkout@v2
       - name: "Use Node.js"
@@ -19,12 +19,15 @@ jobs:
           cache: npm
       - name: "Update package-lock.json"
         run: "npm install --package-lock-only"
-      - name: Set git diff to output
+      - id: diff
+        name: Set git diff to output
         run: echo "::set-output name=diff::git diff --stat"
   update-pull-request:
     needs: install
     runs-on: ubuntu-latest
     steps:
+      - name: Echoooo
+        run: echo "going to merge" ${{ needs.install.outputs.diff }}
       - name: "Merge changes with last commit"
         continue-on-error: true
         if: "${{ needs.install.outputs.diff != '' }}"
@@ -40,3 +43,4 @@ jobs:
         with:
           force: true
           github_token: "${{ secrets.GITHUB_TOKEN }}"
+          branch: ${{ github.ref }}
