@@ -2,10 +2,11 @@ name: Sync versions in lock files
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
+  workflow_dispatch:
 
 jobs:
   enforce-version-sync:
-    if: "${{ contains(github.event.pull_request.labels*.name, 'autorelease: pending') }}"
+    if: "${{ contains(github.event.pull_request.labels.*.name, 'autorelease: pending') }}"
     name: "Update Release PR"
     runs-on: ubuntu-latest
     steps:
