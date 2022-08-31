@@ -5,35 +5,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  install:
+  install-and-maybe-update:
     if: "${{ contains(github.event.pull_request.labels.*.name, 'autorelease: pending') }}"
-    name: "Update Release PR"
+    name: "Update current PR"
     runs-on: ubuntu-latest
-    outputs:
-      diff: ${{ steps.output.outputs.diff }}
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # necessary - this doesn't work with a shallow commit
+
       - name: "Use Node.js"
         uses: actions/setup-node@v3
         with:
           cache: npm
+
       - name: "Update package-lock.json"
         run: "npm install --package-lock-only"
-      - run: echo "here is the diff:" $(git diff --stat)
+
       - id: diff
         name: Set git diff to output
         run: echo "::set-output name=diff::$(git diff --stat)"
+
       - name: "Merge changes with last commit"
         if: "${{ steps.diff.outputs.diff != '' }}"
-        continue-on-error: true
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git commit . -m "chore: package-lock version sync"
-      - continue-on-error: true
-        name: "Push changes"
+      - name: "Push changes"
         uses: ad-m/github-push-action@master
         with:
           force: true
