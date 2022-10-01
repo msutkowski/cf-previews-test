@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.7...web-v1.3.0) (2022-10-01)
+
+
+### Features
+
+* add excitement ([a657eb1](https://github.com/msutkowski/cf-previews-test/commit/a657eb105860c48426ef7639fd2c7203e4b43d65))
+
 ## [1.2.7](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.6...web-v1.2.7) (2022-08-30)
 
 
