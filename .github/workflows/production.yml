@@ -59,7 +59,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish ./apps/web/dist --project-name=test-web
+          command: pages publish ./apps/web/dist --project-name=test-web --commit-hash=${{github.sha}} --commit-dirty=true
   docs:
     if: ${{ startsWith(github.event.release.tag_name, 'docs-') || github.event.inputs.app == 'docs' }}
     environment:
@@ -99,4 +99,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish ./apps/docs/dist --project-name=test-docs
+          command: pages publish ./apps/docs/dist --project-name=test-docs --branch="main" --commit-hash=${{github.sha}} --commit-dirty=true

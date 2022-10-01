@@ -74,7 +74,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish ./apps/web/dist --project-name=test-web --branch="staging"
+          command: pages publish ./apps/web/dist --project-name=test-web --branch="staging"  --commit-hash="${{github.sha}}"
   docs:
     environment:
       name: Docs Staging
@@ -115,4 +115,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages publish ./apps/docs/dist --project-name=test-docs --branch="staging"
+          command: pages publish ./apps/docs/dist --project-name=test-docs --branch="staging" --commit-hash="${{github.sha}}"
