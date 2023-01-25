@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.3.0...docs-v1.4.0) (2023-01-25)
+
+
+### Features
+
+* switch to pnpm ([#56](https://github.com/msutkowski/cf-previews-test/issues/56)) ([5396632](https://github.com/msutkowski/cf-previews-test/commit/539663242051e173a2917cf2e2af1214f3280804))
+
+
+### Bug Fixes
+
+* less aggressive title ([#58](https://github.com/msutkowski/cf-previews-test/issues/58)) ([9250cb0](https://github.com/msutkowski/cf-previews-test/commit/9250cb06e085f7cb867b79c56a0f95334cd5a060))
+
 ## [1.3.0](https://github.com/msutkowski/cf-previews-test/compare/docs-v1.2.7...docs-v1.3.0) (2023-01-25)
 
 
