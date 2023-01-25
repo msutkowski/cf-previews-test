@@ -37,29 +37,25 @@ jobs:
             core.setOutput('branch', cleanBranch)
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          cache: "npm"
-          node-version: 16.13.2
+          version: 7.26.0
 
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        id: cache-nodemodules
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Dependencies
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: npm install --frozen-lockfile --non-interactive
+        run: pnpm install
 
       - name: Build
-        run: npx turbo run build --api="https://turbocache.msutkowski.com" --token="${{ env.TURBO_TOKEN }}"
+        run: pnpm build --filter=docs --api="https://turbocache.msutkowski.com" --token="${{ env.TURBO_TOKEN }}"
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
@@ -93,29 +89,25 @@ jobs:
             core.setOutput('branch', cleanBranch)
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          cache: "npm"
-          node-version: 16.13.2
+          version: 7.26.0
 
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        id: cache-nodemodules
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Install Dependencies
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: npm install --frozen-lockfile --non-interactive
+        run: pnpm install
 
       - name: Build
-        run: npx turbo run build --api="https://turbocache.msutkowski.com" --token="${{ env.TURBO_TOKEN }}"
+        run: pnpm build --filter=web --api="https://turbocache.msutkowski.com" --token="${{ env.TURBO_TOKEN }}"
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
