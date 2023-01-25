@@ -27,32 +27,33 @@ jobs:
       url: https://web.msutkowski.com
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          cache: "npm"
+          version: 7.26.0
 
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        id: cache-nodemodules
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
+
+      # - name: Cache node_modules
+      #   uses: actions/cache@v3
+      #   id: cache-nodemodules
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
 
       - name: Install Dependencies
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: npm install
+        run: pnpm install
 
       - name: Build
-        run: npx turbo run build --filter=web --token="${{ env.TURBO_TOKEN }}"
+        run: pnpm build --filter=web --token="${{ env.TURBO_TOKEN }}"
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
@@ -69,30 +70,31 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-
-      - name: Checkout
-        uses: actions/checkout@v2
         with:
           fetch-depth: 2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          cache: "npm"
+          version: 7.26.0
 
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        id: cache-nodemodules
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
+          cache: "pnpm"
+          node-version: ${{ env.NODE_VERSION }}
+
+      # - name: Cache node_modules
+      #   uses: actions/cache@v3
+      #   id: cache-nodemodules
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-${{ env.NODE_VERSION }}-nodemodules-${{ hashFiles('package-lock.json') }}
 
       - name: Install Dependencies
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: npm install
+        run: pnpm install
 
       - name: Build
-        run: npx turbo run build --filter=docs --token="${{ env.TURBO_TOKEN }}"
+        run: pnpm build --filter=docs --token="${{ env.TURBO_TOKEN }}"
 
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
