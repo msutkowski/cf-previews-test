@@ -1,0 +1,55 @@
+# Changelog
+
+## 1.0.0 (2024-05-11)
+
+
+### Features
+
+* add excitement ([a657eb1](https://github.com/msutkowski/cf-previews-test/commit/a657eb105860c48426ef7639fd2c7203e4b43d65))
+* Fun times ([#19](https://github.com/msutkowski/cf-previews-test/issues/19)) ([c9482a0](https://github.com/msutkowski/cf-previews-test/commit/c9482a091b91951961303ca16b5e145cc77e76d3))
+* greet thomas because he nice ([4048d74](https://github.com/msutkowski/cf-previews-test/commit/4048d744583c2511d9c8b1f912c0e1bb6b181f98))
+* im gonna update in the existing PR ([c5efb8a](https://github.com/msutkowski/cf-previews-test/commit/c5efb8a30c5cc6303505db37d75a4fc32b670280))
+* switch to pnpm ([#56](https://github.com/msutkowski/cf-previews-test/issues/56)) ([5396632](https://github.com/msutkowski/cf-previews-test/commit/539663242051e173a2917cf2e2af1214f3280804))
+* update web very important feature ([#33](https://github.com/msutkowski/cf-previews-test/issues/33)) ([2c75998](https://github.com/msutkowski/cf-previews-test/commit/2c759985b90af35a6aa34205f7b5b10574265425))
+
+
+### Bug Fixes
+
+* [OR-123] docs needed fixin' ([#32](https://github.com/msutkowski/cf-previews-test/issues/32)) ([59f299b](https://github.com/msutkowski/cf-previews-test/commit/59f299bfe635fedc381499f1702f37f96428d9bc))
+* [TEMP-123] Add a regex validation example for PR titles ([#30](https://github.com/msutkowski/cf-previews-test/issues/30)) ([d7ce3f8](https://github.com/msutkowski/cf-previews-test/commit/d7ce3f8f298e6369306bbe9106e445b4a700de05))
+* docs header ([#22](https://github.com/msutkowski/cf-previews-test/issues/22)) ([56b83af](https://github.com/msutkowski/cf-previews-test/commit/56b83afa6cf9a983d42d6a93b1af821cb74ec95f))
+* Docs updates ([#15](https://github.com/msutkowski/cf-previews-test/issues/15)) ([9466530](https://github.com/msutkowski/cf-previews-test/commit/94665309d5e6f589fef81c57158f89f2c8e13684))
+* **docs:** header copy changes ([c6da68a](https://github.com/msutkowski/cf-previews-test/commit/c6da68afe11f2984bf185317cc63f14783bf8aca))
+* **docs:** header title ([9e5c370](https://github.com/msutkowski/cf-previews-test/commit/9e5c37051ea19401c63518d70c07aa90330d4e1e))
+* **docs:** update header ([444654e](https://github.com/msutkowski/cf-previews-test/commit/444654ea9d30fd074c377c903a8ea8c4bd31b29a))
+* **docs:** update header text ([#13](https://github.com/msutkowski/cf-previews-test/issues/13)) ([e241029](https://github.com/msutkowski/cf-previews-test/commit/e2410291f39fcf98f3272b1e1ad2d9709e4303a3))
+* fix typo in header ([62e6c7d](https://github.com/msutkowski/cf-previews-test/commit/62e6c7de1053f1f18d2e901e87ea54c887a95d41))
+* fix web header ([8d7d1c2](https://github.com/msutkowski/cf-previews-test/commit/8d7d1c2092e5be7e074e7002f8aba2efd77fdec2))
+* header change ([#27](https://github.com/msutkowski/cf-previews-test/issues/27)) ([730ef0a](https://github.com/msutkowski/cf-previews-test/commit/730ef0a574083abd3748f746075ba9f47a176b42))
+* less aggressive title ([#58](https://github.com/msutkowski/cf-previews-test/issues/58)) ([9250cb0](https://github.com/msutkowski/cf-previews-test/commit/9250cb06e085f7cb867b79c56a0f95334cd5a060))
+* New title ([#18](https://github.com/msutkowski/cf-previews-test/issues/18)) ([1145067](https://github.com/msutkowski/cf-previews-test/commit/1145067c4560766d9e3ea6481d03e1a913dbbd2d))
+* one more web commit ([#60](https://github.com/msutkowski/cf-previews-test/issues/60)) ([cf63efb](https://github.com/msutkowski/cf-previews-test/commit/cf63efb87765aeac67a923fc5a5f65980e78c7d2))
+* superduper cool docs copy ([5ac609a](https://github.com/msutkowski/cf-previews-test/commit/5ac609a9411ff30b2c00d2b586f923d656f3f434))
+* **ui:** header title should be less exciting ([5ba70b3](https://github.com/msutkowski/cf-previews-test/commit/5ba70b375604a2d837f332cb05a1a541b7238924))
+* **ui:** make headers exciting by default ([85048d5](https://github.com/msutkowski/cf-previews-test/commit/85048d5e7be7ab677a9d6b05ab6a7b4106e67e62))
+* **ui:** update header excitement ([4ef9949](https://github.com/msutkowski/cf-previews-test/commit/4ef9949f5772cec05671365b52bd83e254367850))
+* update docs copy ([88e0b23](https://github.com/msutkowski/cf-previews-test/commit/88e0b2349850bcaeec3d002d7676bbab646ef278))
+* update docs header copy ([e7518b2](https://github.com/msutkowski/cf-previews-test/commit/e7518b245d8f87126db9aa90a2c446498df9383b))
+* update docs index ([94be586](https://github.com/msutkowski/cf-previews-test/commit/94be586f9f0727a80c3b637089ced9fd72aa4cc4))
+* update docs index ([28aa371](https://github.com/msutkowski/cf-previews-test/commit/28aa371441744c067725db8cc4a3f0af0ed07106))
+* update header documentation ([6d70ba5](https://github.com/msutkowski/cf-previews-test/commit/6d70ba55533955c7c3bb96ad1fc343d97753483e))
+* update header title ([f519476](https://github.com/msutkowski/cf-previews-test/commit/f51947665225539d3348d85944676249e1fb5bb7))
+* update headers ([2f49aa6](https://github.com/msutkowski/cf-previews-test/commit/2f49aa63e142d31c3aa6e7d7fe0491609c7c3c19))
+* update headers ([#23](https://github.com/msutkowski/cf-previews-test/issues/23)) ([7ccecfd](https://github.com/msutkowski/cf-previews-test/commit/7ccecfd71ab1d4e9572d9ae5dd76241753cfb57b))
+* update headers for docs and web ([4066625](https://github.com/msutkowski/cf-previews-test/commit/40666258d60622e3627e5d6978135f1498c66cf0))
+* Update web copy ([7875b01](https://github.com/msutkowski/cf-previews-test/commit/7875b01811c2988d21d9ebcb67753029e4797865))
+* update web copy again ([d26485a](https://github.com/msutkowski/cf-previews-test/commit/d26485a6db2c938fa5db1db3ecc66774940d5e4f))
+* update web index ([483047c](https://github.com/msutkowski/cf-previews-test/commit/483047c5d8dd95c64e30696bdbf2909d55e3a388))
+* web header is great ([#20](https://github.com/msutkowski/cf-previews-test/issues/20)) ([e7b8955](https://github.com/msutkowski/cf-previews-test/commit/e7b8955f19d7444f8c8dfd6633b2c2697feafe61))
+* web is cool header ([0d8c3eb](https://github.com/msutkowski/cf-previews-test/commit/0d8c3eb68714063c5ed58c7b96c705a53fac2b03))
+* **web:** [FAKE-123] update web header per product feedback ([2bf6c90](https://github.com/msutkowski/cf-previews-test/commit/2bf6c906f3dbb912833d908713f4d07c9b9a13ba))
+* **web:** header title ([d5ec378](https://github.com/msutkowski/cf-previews-test/commit/d5ec3787da85518dc58f4b011a818842e4536566))
+* **web:** header title copy ([7e67664](https://github.com/msutkowski/cf-previews-test/commit/7e6766464f70c6a432a8193ab94951fa4f7ad00b))
+* **web:** header title copy ([d8cf36b](https://github.com/msutkowski/cf-previews-test/commit/d8cf36bc79258bd24d011f8623861a9e6b5a0f7b))
+* **web:** more copy changes ([437e3cf](https://github.com/msutkowski/cf-previews-test/commit/437e3cf6f55481f53e1b1dffa8063fd51ad727b9))
+* **web:** update header copy one last time ([0b384cf](https://github.com/msutkowski/cf-previews-test/commit/0b384cfe3362ad4ce7d309dcbeaf5012dd9df9d1))
