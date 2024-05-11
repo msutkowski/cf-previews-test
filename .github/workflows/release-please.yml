@@ -7,9 +7,9 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v3
+      - uses: google-apis/release-please-action@v4
         with:
           release-type: node
-          monorepo-tags: true
-          command: manifest
+          include-component-in-tag: true
+          manifest-file: .release-please-manifest.json
           token: ${{ secrets.GH_PAT }}
