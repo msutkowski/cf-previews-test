@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.3.0...web-v1.4.0) (2024-05-11)
+
+
+### Features
+
+* switch to pnpm ([#56](https://github.com/msutkowski/cf-previews-test/issues/56)) ([5396632](https://github.com/msutkowski/cf-previews-test/commit/539663242051e173a2917cf2e2af1214f3280804))
+
+
+### Bug Fixes
+
+* add tons of !!!!'s ([#61](https://github.com/msutkowski/cf-previews-test/issues/61)) ([eb66732](https://github.com/msutkowski/cf-previews-test/commit/eb667321f633f6529f9af2f558f181dc93699be1))
+* fix web header ([8d7d1c2](https://github.com/msutkowski/cf-previews-test/commit/8d7d1c2092e5be7e074e7002f8aba2efd77fdec2))
+* one more web commit ([#60](https://github.com/msutkowski/cf-previews-test/issues/60)) ([cf63efb](https://github.com/msutkowski/cf-previews-test/commit/cf63efb87765aeac67a923fc5a5f65980e78c7d2))
+
 ## [1.3.0](https://github.com/msutkowski/cf-previews-test/compare/web-v1.2.7...web-v1.3.0) (2022-10-01)
 
 
